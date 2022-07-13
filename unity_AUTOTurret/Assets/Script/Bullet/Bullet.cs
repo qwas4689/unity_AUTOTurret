@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    
+
     private float BulletSpeed = 3.0f;
 
     // Start is called before the first frame update
@@ -23,6 +25,7 @@ public class Bullet : MonoBehaviour
         if (other.tag == "Player")
         {
             other.gameObject.SetActive(false);
+            FindObjectOfType<GameManager>().End();
         }
     }
 }
