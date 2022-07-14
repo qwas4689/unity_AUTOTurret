@@ -15,7 +15,9 @@ public class LookingAtPlayer : MonoBehaviour
     private float ShootFire;
     private float FindDot;
     private float FindCross;
-    private float TargetAngle = 10f / 6f;
+    private float TargetMaxAngle = 0.96f;
+    private float TargetMinAngle = 0.256f;
+
 
     void Update()
     {
@@ -33,8 +35,8 @@ public class LookingAtPlayer : MonoBehaviour
     {
         FindDot = FindObjectOfType<NewFindPlayer>().FindPlayerDot();
         FindCross = FindObjectOfType<NewFindPlayer>().FindPlayerCross();
-
-        if (FindDot >= 0.0f && FindDot <= TargetAngle && FindCross < 0.0f)
+        Debug.Log(FindDot);
+        if (FindDot >= TargetMinAngle && FindDot <= TargetMaxAngle && FindCross < 0.0f)
         {
             LookingForPlayer = true;
         }
