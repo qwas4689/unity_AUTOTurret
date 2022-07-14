@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
     PlayerInput _playerInput;
     Rigidbody _rigidbody;
 
-    private float MoveSpeed = 7.0f;
+    private float MoveSpeed = 6.0f;
 
     // Start is called before the first frame update
     void Start()
