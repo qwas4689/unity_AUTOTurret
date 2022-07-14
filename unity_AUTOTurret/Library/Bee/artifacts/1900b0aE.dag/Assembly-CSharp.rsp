@@ -358,6 +358,7 @@
 "Assets/Script/Player/PlayerMove.cs"
 "Assets/Script/ReStart/ReStart.cs"
 "Assets/Script/Turret/LookingAtPlayer.cs"
+"Assets/Script/Turret/NewFindPlayer.cs"
 "Assets/UI/GameOverUI.cs"
 "Assets/UI/TimerText.cs"
 -langversion:9.0

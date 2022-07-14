@@ -13,12 +13,14 @@ public class LookingAtPlayer : MonoBehaviour
     private float ShootingTimeMin = 0.5f;
     private float ShootingTimeMax = 3.0f;
     private float ShootFire;
+    private float FindDot;
+    private float FindCross;
+    private float TargetAngle = 10f / 6f;
 
     void Update()
     {
         if (LookingForPlayer)
         {
-            transform.LookAt(Player);
             Shooting();
         }
         else
@@ -27,12 +29,29 @@ public class LookingAtPlayer : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other) => LookingForPlayer = true;
+    private void OnTriggerStay(Collider other)
+    {
+        FindDot = FindObjectOfType<NewFindPlayer>().FindPlayerDot();
+        FindCross = FindObjectOfType<NewFindPlayer>().FindPlayerCross();
 
-    private void OnTriggerExit(Collider other) => LookingForPlayer = false;
+        if (FindDot >= 0.0f && FindDot <= TargetAngle && FindCross < 0.0f)
+        {
+            LookingForPlayer = true;
+        }
+        else
+        {
+            LookingForPlayer = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        LookingForPlayer = false;
+    }
 
     void Shooting()
     {
+        transform.LookAt(Player);
         ShootingTime += Time.deltaTime;
         ShootFire = Random.Range(ShootingTimeMin, ShootingTimeMax);
 
@@ -43,5 +62,6 @@ public class LookingAtPlayer : MonoBehaviour
             ShootingTime = 0f;
         }
     }
+
 
 }
